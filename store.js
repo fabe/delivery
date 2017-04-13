@@ -1,32 +1,34 @@
-import { action, observable } from 'mobx'
+import { action, observable } from 'mobx';
+import axios from 'axios';
+import { autobind } from 'core-decorators';
+import { apiUrl } from './config';
 
-let store = null
+let store = null;
 
 class Store {
-  @observable lastUpdate = 0
-  @observable light = false
+  constructor(isServer, lastUpdate) {}
 
-  constructor (isServer, lastUpdate) {
-    this.lastUpdate = lastUpdate
+  @autobind
+  @action
+  postDelivery(delivery) {
+    axios
+      .post(`${apiUrl}/delivery`, delivery)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
-
-  @action start = () => {
-    this.timer = setInterval(() => {
-      this.lastUpdate = Date.now()
-      this.light = true
-    })
-  }
-
-  stop = () => clearInterval(this.timer)
 }
 
-export function initStore (isServer, lastUpdate = Date.now()) {
+export function initStore(isServer, lastUpdate = Date.now()) {
   if (isServer && typeof window === 'undefined') {
-    return new Store(isServer, lastUpdate)
+    return new Store(isServer, lastUpdate);
   } else {
     if (store === null) {
-      store = new Store(isServer, lastUpdate)
+      store = new Store(isServer, lastUpdate);
     }
-    return store
+    return store;
   }
 }
