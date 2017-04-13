@@ -2,9 +2,10 @@ import React from 'react';
 import { Provider } from 'mobx-react';
 import { initStore } from '../stores';
 import Page from '../components/Page';
+import Editor from '../components/Editor';
 import { observer } from 'mobx-react';
 
-export default class Home extends React.Component {
+export default class EditorPage extends React.Component {
   static getInitialProps({ req }) {
     const isServer = !!req;
     const store = initStore(isServer);
@@ -19,7 +20,9 @@ export default class Home extends React.Component {
   render() {
     return (
       <Provider store={this.store}>
-        <Page title="Index Page" />
+        <Page>
+          <Editor delivery={this.store.delivery} />
+        </Page>
       </Provider>
     );
   }
