@@ -1,4 +1,5 @@
 import React from 'react';
+import Uploader from './Uploader';
 
 class EditorItem extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class EditorItem extends React.Component {
           value={item.subtitle}
           onChange={e => onFormChange('subtitle', e.target.value, item.id)}
         />
+        <Uploader onFinishedUpload={url => onFormChange('url', url, item.id)} />
         <button onClick={e => onRemoveItem(item.id)}>Remove Item</button>
       </div>
     );
