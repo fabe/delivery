@@ -18,7 +18,7 @@ class EditorItem extends React.Component {
           value={item.subtitle}
           onChange={e => onFormChange('subtitle', e.target.value, item.id)}
         />
-        <Uploader onFinishedUpload={url => onFormChange('url', url, item.id)} />
+        <Uploader onFinishedUpload={url => onFormChange('image', url, item.id)} />
         <button onClick={e => onRemoveItem(item.id)}>Remove Item</button>
       </div>
     );

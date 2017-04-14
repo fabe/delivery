@@ -3,10 +3,7 @@ const mongoose = require('mongoose');
 const DeliveryItemSchema = new mongoose.Schema({
   title: String,
   subtitle: String,
-  image: {
-    largeUrl: String,
-    tinyUrl: String,
-  },
+  image: String,
 });
 
 const DeliverySchema = new mongoose.Schema({
