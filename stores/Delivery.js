@@ -4,51 +4,74 @@ import { autobind } from 'core-decorators';
 import { apiUrl } from '../config';
 
 export default class Delivery {
-  @observable delivery = {
-    title: 'Title',
-    subtitle: 'Subtitle',
-    items: [{ id: 0, title: 'Item Title', subtitle: 'Item Subtitle' }],
-  };
+  @observable delivery = {};
+  @observable editor = {};
+
+  constructor(delivery) {
+    this.delivery = delivery;
+    this.editor = {
+      title: '',
+      subtitle: '',
+      items: [],
+    };
+  }
 
   @autobind
   @action
   onFormChange(name, value, itemId) {
-    if (itemId) {
+    if (itemId || itemId === 0) {
       // Find the index of the item that needs to be updated.
-      const i = this.delivery.items.findIndex(item => item.id === itemId);
+      const i = this.editor.items.findIndex(item => item.id === itemId);
 
       // Create a new item with the updated value.
-      const newItem = { ...this.delivery.items[i], [name]: value };
+      const newItem = { ...this.editor.items[i], [name]: value };
 
       // Create new items.
-      const items = [
-        ...this.delivery.items.slice(0, i),
-        newItem,
-        ...this.delivery.items.slice(i + 1),
-      ];
+      const items = [...this.editor.items.slice(0, i), newItem, ...this.editor.items.slice(i + 1)];
 
       // Update new items.
-      this.delivery = { ...this.delivery, items };
+      this.editor = { ...this.editor, items };
     } else {
-      this.delivery = { ...this.delivery, [name]: value };
+      this.editor = { ...this.editor, [name]: value };
     }
   }
 
   @autobind
   @action
   addNewItem() {
-    const newItemId = this.delivery.items.length;
-    const items = [...this.delivery.items, { id: newItemId, title: '', subtitle: '' }];
-    this.delivery = { ...this.delivery, items };
+    const newItemId = this.editor.items.length;
+    const items = [...this.editor.items, { id: newItemId, title: '', subtitle: '' }];
+    this.editor = { ...this.editor, items };
   }
 
   @autobind
   @action
-  postDelivery(delivery) {
+  removeItem(itemId) {
+    const i = this.editor.items.findIndex(item => item.id === itemId);
+    const items = [...this.editor.items.slice(0, i), ...this.editor.items.slice(i + 1)];
+    this.editor = { ...this.editor, items };
+  }
+
+  @autobind
+  @action
+  postDelivery(editor = this.editor) {
     axios
-      .post(`${apiUrl}/delivery`, delivery)
+      .post(`${apiUrl}/delivery`, editor)
       .then(res => {
         console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  @autobind
+  @action
+  fetchDelivery(id) {
+    axios
+      .get(`${apiUrl}/delivery/${id}`)
+      .then(res => {
+        this.editor = res.data;
       })
       .catch(err => {
         console.log(err);

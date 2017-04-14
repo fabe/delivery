@@ -24,7 +24,24 @@ app.prepare().then(() => {
   server.use(bodyParser.json());
 
   server.post('/api/delivery', (req, res) => {
-    postDelivery(req.body);
+    postDelivery(req.body, (err, id) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.status(201).send(JSON.stringify({ id }));
+      }
+    });
+  });
+
+  server.get('/api/delivery/:id', (req, res) => {
+    getDelivery(req.params.id, delivery => {
+      if (delivery) {
+        res.setHeader('Content-Type', 'application/json');
+        return res.send(JSON.stringify(delivery));
+      } else {
+        return res.sendStatus(404);
+      }
+    });
   });
 
   server.get('*', (req, res) => {
@@ -37,10 +54,17 @@ app.prepare().then(() => {
   });
 });
 
-function postDelivery(data) {
+function postDelivery(data, callback) {
+  const id = Math.round(Date.now() + Math.random());
+  data.id = id;
+
   const delivery = new Delivery(data);
   delivery.save(err => {
-    if (err) console.log(err);
-    else console.log('Success!');
+    if (err) callback(err, null);
+    else callback(null, id);
   });
+}
+
+function getDelivery(id, callback) {
+  Delivery.findOne({ id }, (err, delivery) => callback(delivery));
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 class EditorItem extends React.Component {
   render() {
-    const { item, onFormChange } = this.props;
+    const { item, onFormChange, onRemoveItem } = this.props;
     return (
       <div>
         <input
@@ -17,6 +17,7 @@ class EditorItem extends React.Component {
           value={item.subtitle}
           onChange={e => onFormChange('subtitle', e.target.value, item.id)}
         />
+        <button onClick={e => onRemoveItem(item.id)}>Remove Item</button>
       </div>
     );
   }
