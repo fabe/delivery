@@ -40,7 +40,7 @@ export default class Delivery {
   @action
   addNewItem() {
     const newItemId = this.editor.items.length;
-    const items = [...this.editor.items, { id: newItemId, title: '', subtitle: '' }];
+    const items = [...this.editor.items, { id: newItemId, title: '', subtitle: '', image: '' }];
     this.editor = { ...this.editor, items };
   }
 
