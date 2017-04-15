@@ -5,6 +5,7 @@ const next = require('next');
 const mobxReact = require('mobx-react');
 const mongoose = require('mongoose');
 const { Delivery } = require('./schema');
+const shortid = require('shortid');
 const s3Router = require('react-dropzone-s3-uploader/s3router');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -66,7 +67,7 @@ app.prepare().then(() => {
 });
 
 function postDelivery(data, callback) {
-  const id = Math.round(Date.now() + Math.random());
+  const id = shortid.generate();
   data.id = id;
 
   const delivery = new Delivery(data);

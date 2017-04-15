@@ -7,7 +7,7 @@ const DeliveryItemSchema = new mongoose.Schema({
 });
 
 const DeliverySchema = new mongoose.Schema({
-  id: Number,
+  id: String,
   title: String,
   subtitle: String,
   config: {
