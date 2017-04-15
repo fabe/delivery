@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'mobx-react';
 import { initStore } from '../stores';
 import Page from '../components/Page';
+import Landing from '../components/Landing';
 import { observer } from 'mobx-react';
 
 export default class Home extends React.Component {
@@ -19,7 +20,9 @@ export default class Home extends React.Component {
   render() {
     return (
       <Provider store={this.store}>
-        <Page title="Index Page" />
+        <Page title="Index Page">
+          <Landing />
+        </Page>
       </Provider>
     );
   }
