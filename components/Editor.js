@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { inject, observer } from 'mobx-react';
 import EditorItem from './EditorItem';
+import TextareaAutosize from 'react-autosize-textarea';
 
 @inject('store')
 @observer
@@ -15,21 +16,25 @@ class Editor extends React.Component {
       postDelivery,
     } = this.props.store.delivery;
     return (
-      <div>
+      <div className="container">
         <form onSubmit={e => e.preventDefault()}>
-          <input
-            type="text"
+          <TextareaAutosize
             name="title"
+            placeholder="Project title"
+            className="dashedInput title"
             value={editor.title}
             onChange={e => onFormChange('title', e.target.value)}
           />
 
-          <input
-            type="text"
+          <TextareaAutosize
             name="subtitle"
+            placeholder="Project description"
+            className="dashedInput subtitle"
             value={editor.subtitle}
             onChange={e => onFormChange('subtitle', e.target.value)}
           />
+
+          <div className="divider" />
 
           <div id="items">
             {editor.items.map(item => (
@@ -42,17 +47,29 @@ class Editor extends React.Component {
             ))}
           </div>
 
-          <button onClick={() => addNewItem()}>Add new item</button>
-          <button onClick={() => postDelivery()}>Submit</button>
+          <div id="controls">
+            <button onClick={() => addNewItem()}>Add new item</button>
+            <button onClick={() => postDelivery()}>Save & Share</button>
+          </div>
+
         </form>
 
-        <style jsx>
-          {`
-          #items {
-            margin-top: 20px;
+        <style jsx>{`
+          form {
+            margin-top: 4rem;
           }
-        `}
-        </style>
+
+          #items {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+          }
+
+          #controls {
+            display: flex;
+            margin-bottom: 4rem;
+            justify-content: space-between;
+          }
+        `}</style>
       </div>
     );
   }

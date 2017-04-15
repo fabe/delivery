@@ -1,25 +1,37 @@
 import React from 'react';
 import Uploader from './Uploader';
+import TextareaAutosize from 'react-autosize-textarea';
 
 class EditorItem extends React.Component {
   render() {
     const { item, onFormChange, onRemoveItem } = this.props;
     return (
       <div>
-        <input
-          type="text"
-          name="title"
+        <TextareaAutosize
+          name={`item:title:${item.id}`}
+          placeholder="Screenshot title"
+          className="dashedInput item-title"
           value={item.title}
           onChange={e => onFormChange('title', e.target.value, item.id)}
         />
-        <input
-          type="text"
-          name="subtitle"
+
+        <TextareaAutosize
+          name={`item:subtitle:${item.id}`}
+          placeholder="Screenshot description"
+          className="dashedInput subtitle"
           value={item.subtitle}
           onChange={e => onFormChange('subtitle', e.target.value, item.id)}
         />
+
         <Uploader onFinishedUpload={url => onFormChange('image', url, item.id)} />
-        <button onClick={e => onRemoveItem(item.id)}>Remove Item</button>
+
+        <button className="secondary" onClick={e => onRemoveItem(item.id)}>Remove Item</button>
+
+        <style jsx>{`
+          div {
+            margin-bottom: 4rem;
+          }
+        `}</style>
       </div>
     );
   }

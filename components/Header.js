@@ -12,9 +12,10 @@ const Header = props => (
         width: 100%; height: 3rem;
         line-height: 3rem;
         padding: 0 2rem;
-        background-color: #0474F3;
+        background-color: #fff;
         text-align: left;
         color: #fff;
+        border-bottom: 2px solid #eee;
       }
 
       header a {
