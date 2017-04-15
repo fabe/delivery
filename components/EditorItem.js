@@ -9,7 +9,7 @@ class EditorItem extends React.Component {
       <div>
         <TextareaAutosize
           name={`item:title:${item.id}`}
-          placeholder="Screenshot title"
+          placeholder="Image Title"
           className="dashedInput item-title"
           value={item.title}
           onChange={e => onFormChange('title', e.target.value, item.id)}
@@ -17,7 +17,7 @@ class EditorItem extends React.Component {
 
         <TextareaAutosize
           name={`item:subtitle:${item.id}`}
-          placeholder="Screenshot description"
+          placeholder="Image Description (optional)"
           className="dashedInput subtitle"
           value={item.subtitle}
           onChange={e => onFormChange('subtitle', e.target.value, item.id)}

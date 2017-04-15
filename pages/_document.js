@@ -23,6 +23,12 @@ export default class extends Document {
             html {
               margin: 0;
               padding: 0;
+              height: 100%;
+            }
+
+            html {
+              background-color: #222;
+              overflow: hidden;
             }
 
             body {
@@ -31,7 +37,12 @@ export default class extends Document {
               padding: 3rem 2rem 0;
               font-size: 1rem;
               line-height: 1.5;
+              max-width: 1800px;
+              min-height: 100%;
+              margin: 0 auto;
+              background-color: #fff;
               -webkit-font-smoothing: antialiased;
+              overflow: scroll;
             }
 
             h1,
@@ -75,19 +86,30 @@ export default class extends Document {
               all: unset;
               background-color: #0474F3;
               color: #fff;
+              -webkit-text-fill-color: #fff;
               padding: 1rem;
               border-radius: 3px;
               font-weight: 500;
               cursor: pointer;
+              transition: .2s ease all;
+            }
+
+            button:hover {
+              background-color: #0067E6;
+            }
+
+            button.secondary {
+              background-color: #f2f2f2;
+              color: #999;
+              -webkit-text-fill-color: #999;
+            }
+
+            button.secondary:hover {
+              background-color: #eaeaea;
             }
 
             img {
               max-width: 100%;
-            }
-
-            button.secondary {
-              background-color: #f6f6f6;
-              color: #999;
             }
 
             .container {
@@ -96,7 +118,7 @@ export default class extends Document {
             }
 
             .divider {
-              width: 15%; height: 4px;
+              width: 15%; height: 2px;
               margin: 4rem auto;
               background-color: #eee;
             }
@@ -105,11 +127,18 @@ export default class extends Document {
               display: inline-block;
               width: 100%;
               min-height: 10px;
-              margin-bottom: 1rem;
+              margin-bottom: 0.5rem;
               padding: 1rem;
               border: 2px dashed #eee;
+              border-radius: 3px;
               text-align: center;
               resize: none;
+              transition: .2s all ease;
+            }
+
+            .dashedInput .dashedInput {
+              margin-bottom: 0;
+              border-bottom: 0;
             }
 
             .dashedInput:focus {

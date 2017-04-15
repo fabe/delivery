@@ -20,6 +20,7 @@ class Uploader extends React.Component {
           width: '100%',
           minHeight: 200,
           border: '2px dashed #eee',
+          borderRadius: 3,
           marginBottom: '1rem',
           padding: '1rem',
           backgroundColor: '#fcfcfc',

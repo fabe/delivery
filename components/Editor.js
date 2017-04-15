@@ -7,6 +7,13 @@ import TextareaAutosize from 'react-autosize-textarea';
 @inject('store')
 @observer
 class Editor extends React.Component {
+  componentDidMount() {
+    this.title.textarea.focus();
+
+    // Add first item.
+    this.props.store.delivery.addNewItem();
+  }
+
   render() {
     const {
       editor,
@@ -20,15 +27,16 @@ class Editor extends React.Component {
         <form onSubmit={e => e.preventDefault()}>
           <TextareaAutosize
             name="title"
-            placeholder="Project title"
+            placeholder="Delivery Title"
             className="dashedInput title"
+            ref={title => this.title = title}
             value={editor.title}
             onChange={e => onFormChange('title', e.target.value)}
           />
 
           <TextareaAutosize
             name="subtitle"
-            placeholder="Project description"
+            placeholder="Add a Description (optional)"
             className="dashedInput subtitle"
             value={editor.subtitle}
             onChange={e => onFormChange('subtitle', e.target.value)}
