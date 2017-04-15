@@ -1,5 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document';
-import Link from 'next/link';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default class extends Document {
   render() {
@@ -9,33 +10,22 @@ export default class extends Document {
           <title>Delivery</title>
         </Head>
         <body>
-          <header>
-            <Link href="/"><a>🚚</a></Link>
-          </header>
+          <Header />
           <Main />
+          <Footer />
           <NextScript />
           <style jsx global>{`
+            body,
+            html {
+              margin: 0;
+              padding: 0;
+            }
+            
             body {
               font-family: system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Lucida Grande';
               color: #232325;
-              padding-top: 4em;
+              padding: 3rem 2rem 0;
               -webkit-font-smoothing: antialiased;
-            }
-
-            header {
-              position: fixed;
-              left: 0; right: 0;
-              top: 0;
-              width: 100%;
-              padding: 10px 20px;
-              background-color: #0474F3;
-              text-align: left;
-              color: #fff;
-            }
-
-            header a {
-              color: #fff;
-              text-decoration: none;
             }
 
             h1,
