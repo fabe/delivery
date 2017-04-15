@@ -5,6 +5,7 @@ const next = require('next');
 const mobxReact = require('mobx-react');
 const mongoose = require('mongoose');
 const { Delivery } = require('./schema');
+const s3Router = require('react-dropzone-s3-uploader/s3router');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -43,6 +44,16 @@ app.prepare().then(() => {
       }
     });
   });
+
+  server.use(
+    '/s3',
+    s3Router({
+      bucket: 'deliverysh',
+      region: 'us-west-2',
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      ACL: 'private',
+    })
+  );
 
   server.get('*', (req, res) => {
     return handle(req, res);
