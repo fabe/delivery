@@ -16,6 +16,19 @@ class Uploader extends React.Component {
         maxSize={1024 * 1024 * 5}
         upload={uploadOptions}
         s3Url={uploadOptions.s3Url}
+        style={{
+          width: '100%',
+          minHeight: 200,
+          border: '2px dashed #eee',
+          marginBottom: '1rem',
+          padding: '1rem',
+          backgroundColor: '#fcfcfc',
+          backgroundImage: "url('/static/ico-upload.svg')",
+          backgroundSize: 48,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          cursor: 'pointer',
+        }}
       />
     );
   }
