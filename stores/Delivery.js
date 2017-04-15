@@ -1,5 +1,6 @@
 import { action, observable, extendObservable } from 'mobx';
 import axios from 'axios';
+import Router from 'next/router';
 import { autobind } from 'core-decorators';
 import { apiUrl } from '../config';
 
@@ -58,7 +59,7 @@ export default class Delivery {
     axios
       .post(`${apiUrl}/delivery`, editor)
       .then(res => {
-        console.log(res);
+        Router.push(`/delivery?id=${res.data.id}`);
       })
       .catch(err => {
         console.log(err);
@@ -71,7 +72,7 @@ export default class Delivery {
     axios
       .get(`${apiUrl}/delivery/${id}`)
       .then(res => {
-        this.editor = res.data;
+        this.delivery = res.data;
       })
       .catch(err => {
         console.log(err);
