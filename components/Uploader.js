@@ -17,10 +17,13 @@ class Uploader extends React.Component {
         maxSize={1024 * 1024 * 5}
         upload={uploadOptions}
         s3Url={uploadOptions.s3Url}
+        accept="image/*"
         style={{
           width: '100%',
           minHeight: 200,
-          border: '2px dashed #eee',
+          borderStyle: 'dashed',
+          borderWidth: 2,
+          borderColor: '#eee',
           borderRadius: 3,
           marginBottom: '1rem',
           padding: '1rem',
@@ -30,6 +33,12 @@ class Uploader extends React.Component {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           cursor: 'pointer',
+        }}
+        activeStyle={{
+          borderStyle: 'dashed',
+          borderWidth: 2,
+          borderColor: '#eee',
+          backgroundColor: '#f8f8f8',
         }}
       />
     );

@@ -192,6 +192,10 @@ export default class extends Document {
               border-color: #ff3a30;
             }
 
+            .rdsu-progress {
+              color: #888;
+            }
+
             ::-webkit-input-placeholder {
               opacity: 0.5;
               color: inherit;

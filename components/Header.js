@@ -30,6 +30,7 @@ const Header = props => (
         background-color: rgba(255, 255, 255, 0.97);
         box-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
         text-align: left;
+        z-index: 69;
       }
 
       span {
