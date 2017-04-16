@@ -28,7 +28,11 @@ export default class DeliveryPage extends React.Component {
       <Provider store={this.store}>
         <Page>
           <Head>
-            <title>Delivery — {this.store.delivery.delivery.title}</title>
+            <title>
+              Delivery —
+              {' '}
+              {this.store.delivery.delivery.title || this.props.store.delivery.delivery.title}
+            </title>
           </Head>
           <Delivery id={this.props.url.query.id} />
         </Page>
