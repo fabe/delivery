@@ -82,6 +82,10 @@ export default class extends Document {
               border-color: #0474F3;
             }
 
+            strong {
+              font-weight: 500;
+            }
+
             button {
               all: unset;
               position: relative;

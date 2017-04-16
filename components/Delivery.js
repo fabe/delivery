@@ -1,6 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import DeliveryItem from './DeliveryItem';
+import Success from './Success';
 import Error from '../pages/_error';
 
 @inject('store')
@@ -13,8 +14,11 @@ class Delivery extends React.Component {
   }
 
   renderDelivery(delivery) {
+    const { deliveryCreated } = this.props.store.delivery;
+
     return (
       <div className="container">
+        {deliveryCreated ? <Success id={delivery.id} /> : null}
         <hgroup>
           <h1>{delivery.title}</h1>
           <p>{delivery.subtitle}</p>
