@@ -46,16 +46,23 @@ export default class extends Document {
               overflow: scroll;
             }
 
-            h1,
-            h2,
+            h1 {
+              margin-bottom: 1.5rem;
+            }
+
+            h2 {
+              margin-bottom: 0.3rem;
+            }
+
             h3 {
-              margin-bottom: 0.8rem;
+              margin-bottom: 2rem;
             }
 
             h1,
             .title {
-              font-size: 2rem;
+              font-size: 2.5rem;
               font-weight: 500;
+              line-height: 1.2;
             }
 
             h2,
@@ -66,7 +73,7 @@ export default class extends Document {
             
             h3,
             .masthead {
-              font-size: 1rem;
+              font-size: 1.2rem;
               font-weight: 500;
               color: #888;
             }
@@ -135,7 +142,8 @@ export default class extends Document {
               -webkit-text-fill-color: rgba(0, 0, 0, 0);
             }
 
-            button.loading:before {
+            button.loading:before,
+            .image:before {
               width: 25px; height: 25px;
               top: 50%; left: 50%;
               transform: translate(-50%, -50%);
@@ -148,6 +156,10 @@ export default class extends Document {
               animation-timing-function: ease-out;
               transform-origin: 0% 0%;
               content: ' ';
+            }
+
+            .image:before {
+              background-image: url('/static/loading-black.svg');
             }
 
             img {

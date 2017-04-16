@@ -8,7 +8,7 @@ const Landing = ({ item }) => (
       Deliver your design work,<br />clutter-free.
     </h2>
 
-    <Link prefetch href="/share?id=Hk0ric1Ax">
+    <Link prefetch href="/share?id=S1yfrfWCl">
       <button className="secondary">See an example</button>
     </Link>
     <Link prefetch href="/new"><button>Create a delivery</button></Link>

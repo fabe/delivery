@@ -20,12 +20,19 @@ const DeliveryItem = ({ item }) => (
     </span>
     <style jsx>{`
       div {
-        margin-bottom: 4rem;
+        margin-bottom: 6rem;
       }
 
       .image {
         position: relative;
         display: block;
+        background-color: #eee;
+        min-height: 200px;
+      }
+
+      .image > :global(img) {
+        display: block;
+        position: relative;
       }
 
       .image:hover > a {
