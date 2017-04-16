@@ -1,6 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import DeliveryItem from './DeliveryItem';
+import Error from '../pages/_error';
 
 @inject('store')
 @observer
@@ -40,7 +41,8 @@ class Delivery extends React.Component {
 
   render() {
     const { delivery } = this.props.store.delivery;
-    return delivery ? this.renderDelivery(delivery) : <div>Loading...</div>;
+    if (typeof delivery === 'number') return <Error statusCode={delivery} />;
+    return delivery ? this.renderDelivery(delivery) : <div />;
   }
 }
 

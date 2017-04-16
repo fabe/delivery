@@ -8,6 +8,7 @@ export default class Delivery {
   @observable delivery = {};
   @observable editor = {};
   @observable isCreatingDelivery = false;
+  @observable deliveryNotFound = false;
 
   constructor(delivery) {
     this.delivery = delivery;
@@ -78,7 +79,7 @@ export default class Delivery {
         this.delivery = res.data;
       })
       .catch(err => {
-        console.log(err);
+        this.delivery = err.response.status;
       });
   }
 }

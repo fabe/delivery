@@ -11,9 +11,7 @@ export default class DeliveryPage extends React.Component {
     const delivery = await axios
       .get(`http://localhost:3000/api/delivery/${query.id}`)
       .then(res => res.data)
-      .catch(err => {
-        return false;
-      });
+      .catch(err => err.response.status);
     const isServer = !!req;
     const store = initStore(isServer, delivery);
     return { isServer, delivery };
