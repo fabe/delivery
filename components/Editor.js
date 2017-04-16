@@ -21,7 +21,9 @@ class Editor extends React.Component {
       addNewItem,
       removeItem,
       postDelivery,
+      isCreatingDelivery,
     } = this.props.store.delivery;
+
     return (
       <div className="container">
         <form onSubmit={e => e.preventDefault()}>
@@ -57,7 +59,12 @@ class Editor extends React.Component {
 
           <div id="controls">
             <button onClick={() => addNewItem()}>Add new item</button>
-            <button onClick={() => postDelivery()}>Save & Share</button>
+            <button
+              onClick={() => postDelivery()}
+              className={isCreatingDelivery ? 'loading' : null}
+            >
+              Save & Share
+            </button>
           </div>
 
         </form>

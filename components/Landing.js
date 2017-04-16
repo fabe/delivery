@@ -8,10 +8,10 @@ const Landing = ({ item }) => (
       Share your design work, without the hassle.
     </h2>
 
-    <Link href="/delivery?id=Hk0ric1Ax">
+    <Link prefetch href="/delivery?id=Hk0ric1Ax">
       <button className="secondary">View an example</button>
     </Link>
-    <Link href="/new"><button>Create a delivery</button></Link>
+    <Link prefetch href="/new"><button>Create a delivery</button></Link>
 
     <p>
       delivery.sh is an homage to

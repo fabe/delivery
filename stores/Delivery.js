@@ -7,6 +7,7 @@ import { apiUrl } from '../config';
 export default class Delivery {
   @observable delivery = {};
   @observable editor = {};
+  @observable isCreatingDelivery = false;
 
   constructor(delivery) {
     this.delivery = delivery;
@@ -56,10 +57,12 @@ export default class Delivery {
   @autobind
   @action
   postDelivery(editor = this.editor) {
+    this.isCreatingDelivery = true;
     axios
       .post(`${apiUrl}/delivery`, editor)
       .then(res => {
-        Router.push(`/delivery?id=${res.data.id}`);
+        const url = `/delivery?id=${res.data.id}`;
+        Router.push(url).then(() => this.isCreatingDelivery = false);
       })
       .catch(err => {
         console.log(err);
