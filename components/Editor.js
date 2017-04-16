@@ -3,15 +3,13 @@ import Link from 'next/link';
 import { inject, observer } from 'mobx-react';
 import EditorItem from './EditorItem';
 import TextareaAutosize from 'react-autosize-textarea';
+import ErrorBar from '../components/ErrorBar';
 
 @inject('store')
 @observer
 class Editor extends React.Component {
   componentDidMount() {
     this.title.textarea.focus();
-
-    // Add first item.
-    this.props.store.delivery.addNewItem();
   }
 
   render() {
@@ -24,15 +22,18 @@ class Editor extends React.Component {
       isCreatingDelivery,
       setIsUploading,
       isUploading,
+      showErrorModal,
+      error,
     } = this.props.store.delivery;
 
     return (
       <div className="container">
+        <ErrorBar show={showErrorModal} error={error} />
         <form onSubmit={e => e.preventDefault()}>
           <TextareaAutosize
             name="title"
             placeholder="Delivery Title"
-            className="dashedInput title"
+            className={`dashedInput title ${error === 'no-title' ? 'error' : null}`}
             ref={title => this.title = title}
             value={editor.title}
             onChange={e => onFormChange('title', e.target.value)}
@@ -49,10 +50,12 @@ class Editor extends React.Component {
           <div className="divider" />
 
           <div id="items">
-            {editor.items.map(item => (
+            {editor.items.map((item, i) => (
               <EditorItem
                 key={item.id}
                 item={item}
+                i={i}
+                itemsLength={editor.items.length}
                 onFormChange={onFormChange}
                 onRemoveItem={removeItem}
                 setIsUploading={setIsUploading}
@@ -65,7 +68,7 @@ class Editor extends React.Component {
             <button
               onClick={() => postDelivery()}
               className={isCreatingDelivery ? 'loading' : null}
-              disabled={isUploading > 0}
+              disabled={isUploading > 0 || isCreatingDelivery}
             >
               Save & Share
             </button>
@@ -80,13 +83,14 @@ class Editor extends React.Component {
 
           #items {
             margin-top: 2rem;
-            margin-bottom: 2rem;
           }
 
           #controls {
             display: flex;
             margin-bottom: 4rem;
+            padding-top: 4rem;
             justify-content: space-between;
+            border-top: 2px solid #eee;
           }
         `}</style>
       </div>

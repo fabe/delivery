@@ -4,12 +4,13 @@ import TextareaAutosize from 'react-autosize-textarea';
 
 class EditorItem extends React.Component {
   render() {
-    const { item, onFormChange, onRemoveItem, setIsUploading } = this.props;
+    const { item, onFormChange, onRemoveItem, setIsUploading, itemsLength, i } = this.props;
+
     return (
       <div>
         <TextareaAutosize
           name={`item:title:${item.id}`}
-          placeholder="Image Title"
+          placeholder="Image Title (optional)"
           className="dashedInput item-title"
           value={item.title}
           onChange={e => onFormChange('title', e.target.value, item.id)}
@@ -31,7 +32,9 @@ class EditorItem extends React.Component {
           }}
         />
 
-        <button className="secondary" onClick={e => onRemoveItem(item.id)}>Remove Item</button>
+        {i > 0 || itemsLength > 1
+          ? <button className="secondary" onClick={e => onRemoveItem(item.id)}>Remove Item</button>
+          : null}
 
         <style jsx>{`
           div {

@@ -9,13 +9,15 @@ export default class Delivery {
   @observable editor = {};
   @observable isCreatingDelivery = false;
   @observable isUploading = 0;
+  @observable error = '';
+  @observable showErrorModal = false;
 
   constructor(delivery) {
     this.delivery = delivery;
     this.editor = {
       title: '',
       subtitle: '',
-      items: [],
+      items: [{ id: 0, title: '', subtitle: '', image: '' }],
     };
   }
 
@@ -35,6 +37,12 @@ export default class Delivery {
       // Update new items.
       this.editor = { ...this.editor, items };
     } else {
+      if (name === 'title' && value === '') {
+        this.error = 'no-title';
+      } else {
+        this.error = '';
+      }
+
       this.editor = { ...this.editor, [name]: value };
     }
   }
@@ -55,19 +63,46 @@ export default class Delivery {
     this.editor = { ...this.editor, items };
   }
 
+  validateForm() {
+    if (!this.editor.title) {
+      this.error = 'no-title';
+      this.showErrorModal = true;
+    } else if (this.stripedEmptyItems().length === 0) {
+      this.error = 'no-items';
+      this.showErrorModal = true;
+    } else {
+      this.error = '';
+      this.showErrorModal = false;
+    }
+  }
+
+  stripedEmptyItems() {
+    const actualItems = this.editor.items.filter(item => item.image !== '');
+    return actualItems;
+  }
+
   @autobind
   @action
   postDelivery(editor = this.editor) {
-    this.isCreatingDelivery = true;
-    axios
-      .post(`${apiUrl}/delivery`, editor)
-      .then(res => {
-        const url = `/delivery?id=${res.data.id}`;
-        Router.push(url).then(() => this.isCreatingDelivery = false);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.validateForm();
+    setTimeout(() => this.showErrorModal = false, 2500);
+
+    if (this.error) {
+      console.log('has errors');
+    } else {
+      this.isCreatingDelivery = true;
+      this.editor.items = this.stripedEmptyItems();
+
+      axios
+        .post(`${apiUrl}/delivery`, editor)
+        .then(res => {
+          const url = `/delivery?id=${res.data.id}`;
+          Router.push(url).then(() => this.isCreatingDelivery = false);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 
   @autobind
