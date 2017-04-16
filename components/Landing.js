@@ -5,11 +5,11 @@ const Landing = ({ item }) => (
   <div className="container">
     <h1>🚚</h1>
     <h2>
-      Share your design work, without the hassle.
+      Deliver your design work,<br />clutter-free.
     </h2>
 
-    <Link prefetch href="/delivery?id=Hk0ric1Ax">
-      <button className="secondary">View an example</button>
+    <Link prefetch href="/share?id=Hk0ric1Ax">
+      <button className="secondary">See an example</button>
     </Link>
     <Link prefetch href="/new"><button>Create a delivery</button></Link>
 
@@ -28,6 +28,8 @@ const Landing = ({ item }) => (
       h1 {
         margin-top: 0;
         margin-bottom: 2.5rem;
+        font-size: 2.5rem;
+        line-height: 1;
         user-select: none;
         cursor: default;
         animation-duration: 1.5s;
@@ -36,6 +38,9 @@ const Landing = ({ item }) => (
 
       h2 {
         margin-bottom: 2.5rem;
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.2;
       }
 
       h2,

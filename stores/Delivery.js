@@ -11,6 +11,7 @@ export default class Delivery {
   @observable isUploading = 0;
   @observable error = '';
   @observable showErrorModal = false;
+  @observable deliveryCreated = false;
 
   constructor(delivery) {
     this.delivery = delivery;
@@ -96,8 +97,11 @@ export default class Delivery {
       axios
         .post(`${apiUrl}/delivery`, editor)
         .then(res => {
-          const url = `/delivery?id=${res.data.id}`;
-          Router.push(url).then(() => this.isCreatingDelivery = false);
+          const url = `/share?id=${res.data.id}`;
+          Router.push(url).then(() => {
+            this.isCreatingDelivery = false;
+            this.deliveryCreated = true;
+          });
         })
         .catch(err => {
           console.log(err);
