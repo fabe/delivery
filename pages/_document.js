@@ -1,6 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FeedbackWidget from '../components/FeedbackWidget';
 
 export default class extends Document {
   render() {
@@ -9,6 +10,7 @@ export default class extends Document {
         <Head>
           <title>Delivery</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <FeedbackWidget />
         </Head>
         <body>
           <Header />
@@ -207,6 +209,31 @@ export default class extends Document {
             .rdsu-progress {
               color: #888;
             }
+
+            #pp-cfp-root {
+              bottom: 1rem !important;
+              right: 1rem !important;
+            }
+
+            #pp-cfp-overlay {
+              position: fixed !important;
+            }
+
+            #pp-cfp-trigger {
+              background-color: #f3f3f3 !important;
+              color: #999 !important;
+              border-radius: 3px !important;
+              -webkit-text-fill-color: #999;
+              border: none !important;
+            }
+
+            #pp-cfp-trigger:hover {
+              background-color: #eaeaea !important;
+            }
+
+            #pp-cfp-trigger:active {
+              box-shadow: none !important;
+            } 
 
             ::-webkit-input-placeholder {
               opacity: 0.5;

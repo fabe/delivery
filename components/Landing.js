@@ -50,7 +50,8 @@ const Landing = ({ item }) => (
         animation-name: fadein;
       }
 
-      :global(header) {
+      :global(header),
+      :global(#pp-cfp-root) {
         animation-duration: 3s;
         animation-name: fadein;
       }
