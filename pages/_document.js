@@ -84,6 +84,7 @@ export default class extends Document {
 
             button {
               all: unset;
+              position: relative;
               background-color: #0474F3;
               color: #fff;
               -webkit-text-fill-color: #fff;
@@ -98,6 +99,15 @@ export default class extends Document {
               background-color: #0067E6;
             }
 
+            button:active {
+              transform: scale(0.95);
+            }
+
+            button:disabled {
+              opacity: .5;
+              cursor: not-allowed;
+            }
+
             button.secondary {
               background-color: #f2f2f2;
               color: #999;
@@ -108,12 +118,32 @@ export default class extends Document {
               background-color: #eaeaea;
             }
 
+            button.loading {
+              color: rgba(0, 0, 0, 0);
+              -webkit-text-fill-color: rgba(0, 0, 0, 0);
+            }
+
+            button.loading:before {
+              width: 25px; height: 25px;
+              top: 50%; left: 50%;
+              transform: translate(-50%, -50%);
+              display: block;
+              position: absolute;
+              background-image: url('/static/loading-white.svg');
+              animation-duration: .6s;
+              animation-name: spin;
+              animation-iteration-count: infinite;
+              animation-timing-function: ease-out;
+              transform-origin: 0% 0%;
+              content: ' ';
+            }
+
             img {
               max-width: 100%;
             }
 
             .container {
-              max-width: 700px;
+              max-width: 600px;
               margin: 2rem auto;
             }
 
@@ -146,6 +176,10 @@ export default class extends Document {
               border-color: #aaa;
             }
 
+            .dashedInput.error {
+              border-color: #ff3a30;
+            }
+
             ::-webkit-input-placeholder {
               color: #aaa;
             }
@@ -160,6 +194,15 @@ export default class extends Document {
 
             :-moz-placeholder {
               color: #aaa;
+            }
+
+            @keyframes spin {
+              0% {
+                transform: rotate(0deg) translate(-50%, -50%);
+              }
+              100% {
+                transform: rotate(360deg) translate(-50%, -50%);
+              }
             }
           `}</style>
         </body>
