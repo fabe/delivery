@@ -31,6 +31,14 @@ class Editor extends React.Component {
         <ErrorBar show={showErrorModal} error={error} />
         <form onSubmit={e => e.preventDefault()}>
           <TextareaAutosize
+            name="masthead"
+            placeholder="Name or Company (optional)"
+            className={`dashedInput masthead`}
+            value={editor.masthead}
+            onChange={e => onFormChange('masthead', e.target.value)}
+          />
+
+          <TextareaAutosize
             name="title"
             placeholder="Delivery Title"
             className={`dashedInput title ${error === 'no-title' ? 'error' : null}`}

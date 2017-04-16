@@ -8,6 +8,7 @@ const DeliveryItemSchema = new mongoose.Schema({
 
 const DeliverySchema = new mongoose.Schema({
   id: String,
+  masthead: String,
   title: String,
   subtitle: String,
   config: {

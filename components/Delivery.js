@@ -20,6 +20,7 @@ class Delivery extends React.Component {
       <div className="container">
         {deliveryCreated ? <Success id={delivery.id} /> : null}
         <hgroup>
+          <h3>{delivery.masthead}</h3>
           <h1>{delivery.title}</h1>
           <p>{delivery.subtitle}</p>
         </hgroup>

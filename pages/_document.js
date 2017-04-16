@@ -63,6 +63,13 @@ export default class extends Document {
               font-size: 1.5rem;
               font-weight: 500;
             }
+            
+            h3,
+            .masthead {
+              font-size: 1rem;
+              font-weight: 500;
+              color: #888;
+            }
 
             p,
             .subtitle {
@@ -186,19 +193,23 @@ export default class extends Document {
             }
 
             ::-webkit-input-placeholder {
-              color: #aaa;
+              opacity: 0.5;
+              color: inherit;
             }
 
             ::-moz-placeholder {
-              color: #aaa;
+              opacity: 0.5;
+              color: inherit;
             }
 
             :-ms-input-placeholder {
-              color: #aaa;
+              opacity: 0.5;
+              color: inherit;
             }
 
             :-moz-placeholder {
-              color: #aaa;
+              opacity: 0.5;
+              color: inherit;
             }
 
             @keyframes spin {

@@ -18,6 +18,7 @@ export default class Delivery {
     this.editor = {
       title: '',
       subtitle: '',
+      masthead: '',
       items: [{ id: 0, title: '', subtitle: '', image: '' }],
     };
   }
