@@ -12,6 +12,7 @@ class Uploader extends React.Component {
 
     return (
       <DropzoneS3Uploader
+        onDropAccepted={this.props.onDrop}
         onFinish={info => this.props.onFinishedUpload(info.fileUrl)}
         maxSize={1024 * 1024 * 5}
         upload={uploadOptions}

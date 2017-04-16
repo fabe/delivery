@@ -4,7 +4,7 @@ import TextareaAutosize from 'react-autosize-textarea';
 
 class EditorItem extends React.Component {
   render() {
-    const { item, onFormChange, onRemoveItem } = this.props;
+    const { item, onFormChange, onRemoveItem, setIsUploading } = this.props;
     return (
       <div>
         <TextareaAutosize
@@ -23,7 +23,13 @@ class EditorItem extends React.Component {
           onChange={e => onFormChange('subtitle', e.target.value, item.id)}
         />
 
-        <Uploader onFinishedUpload={url => onFormChange('image', url, item.id)} />
+        <Uploader
+          onDrop={() => setIsUploading(true)}
+          onFinishedUpload={url => {
+            onFormChange('image', url, item.id);
+            setIsUploading(false);
+          }}
+        />
 
         <button className="secondary" onClick={e => onRemoveItem(item.id)}>Remove Item</button>
 

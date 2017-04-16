@@ -8,7 +8,7 @@ export default class Delivery {
   @observable delivery = {};
   @observable editor = {};
   @observable isCreatingDelivery = false;
-  @observable deliveryNotFound = false;
+  @observable isUploading = 0;
 
   constructor(delivery) {
     this.delivery = delivery;
@@ -81,5 +81,12 @@ export default class Delivery {
       .catch(err => {
         this.delivery = err.response.status;
       });
+  }
+
+  @autobind
+  @action
+  setIsUploading(bool) {
+    const isUploading = bool ? this.isUploading + 1 : this.isUploading - 1;
+    this.isUploading = isUploading;
   }
 }

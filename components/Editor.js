@@ -22,6 +22,8 @@ class Editor extends React.Component {
       removeItem,
       postDelivery,
       isCreatingDelivery,
+      setIsUploading,
+      isUploading,
     } = this.props.store.delivery;
 
     return (
@@ -53,6 +55,7 @@ class Editor extends React.Component {
                 item={item}
                 onFormChange={onFormChange}
                 onRemoveItem={removeItem}
+                setIsUploading={setIsUploading}
               />
             ))}
           </div>
@@ -62,6 +65,7 @@ class Editor extends React.Component {
             <button
               onClick={() => postDelivery()}
               className={isCreatingDelivery ? 'loading' : null}
+              disabled={isUploading > 0}
             >
               Save & Share
             </button>
