@@ -8,6 +8,7 @@ export default class extends Document {
       <html>
         <Head>
           <title>Delivery</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <body>
           <Header />

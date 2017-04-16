@@ -4,6 +4,7 @@ import { initStore } from '../stores';
 import Page from '../components/Page';
 import Editor from '../components/Editor';
 import { observer } from 'mobx-react';
+import Head from 'next/head';
 
 export default class EditorPage extends React.Component {
   static getInitialProps({ req }) {
@@ -21,6 +22,9 @@ export default class EditorPage extends React.Component {
     return (
       <Provider store={this.store}>
         <Page>
+          <Head>
+            <title>Delivery — New delivery</title>
+          </Head>
           <Editor delivery={this.store.delivery} />
         </Page>
       </Provider>

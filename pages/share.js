@@ -5,6 +5,7 @@ import Page from '../components/Page';
 import Delivery from '../components/Delivery';
 import { observer } from 'mobx-react';
 import axios from 'axios';
+import Head from 'next/head';
 
 export default class DeliveryPage extends React.Component {
   static async getInitialProps({ req, query }) {
@@ -26,6 +27,9 @@ export default class DeliveryPage extends React.Component {
     return (
       <Provider store={this.store}>
         <Page>
+          <Head>
+            <title>Delivery — {this.store.delivery.delivery.title}</title>
+          </Head>
           <Delivery id={this.props.url.query.id} />
         </Page>
       </Provider>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 
 export default class Error extends React.Component {
   static getInitialProps({ res, jsonPageRes }) {
@@ -22,6 +23,10 @@ export default class Error extends React.Component {
 
     return (
       <div className="container">
+        <Head>
+          <title>Delivery — {statusCode}</title>
+        </Head>
+
         {statusCode ? <h1>{statusCode}</h1> : <h1>Oh no!</h1>}
         {this.renderErrorMessage(statusCode)}
 
