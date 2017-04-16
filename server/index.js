@@ -6,6 +6,7 @@ const mobxReact = require('mobx-react');
 const mongoose = require('mongoose');
 const { Delivery } = require('./schema');
 const shortid = require('shortid');
+const { mLabUrl, mLabUser, mLabPassword } = require('./config');
 const s3Router = require('react-dropzone-s3-uploader/s3router');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -16,7 +17,7 @@ const handle = app.getRequestHandler();
 mobxReact.useStaticRendering(true);
 
 // Set up the database.
-mongoose.connect('mongodb://localhost/delivery');
+mongoose.connect(`mongodb://${mLabUser}:${mLabPassword}@${mLabUrl}`);
 mongoose.Promise = global.Promise;
 
 app.prepare().then(() => {
