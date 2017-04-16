@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import DeliveryItem from './DeliveryItem';
 import Success from './Success';
 import Error from '../pages/_error';
+import Head from 'next/head';
 
 @inject('store')
 @observer
@@ -18,6 +19,11 @@ class Delivery extends React.Component {
 
     return (
       <div className="container">
+        <Head>
+          <title>
+            Delivery — {delivery.title}
+          </title>
+        </Head>
         {deliveryCreated ? <Success id={delivery.id} /> : null}
         <hgroup>
           <h3>{delivery.masthead}</h3>
