@@ -4,7 +4,17 @@ import Link from 'next/link';
 const Header = props => (
   <header>
     <Link href="/"><a className="logo">🚚</a></Link>
-    <span>Built by <a href="https://fabianschultz.com">Fabian Schultz</a> on 🐣 2017.</span>
+    <span>
+      Built by
+      {' '}
+      <a href="https://fabianschultz.com">Fabian Schultz</a>
+      {' '}
+      on
+      {' '}
+      <span title="Easter">🐣</span>
+      {' '}
+      2017.
+    </span>
     <style jsx>{`
       header {
         position: fixed;
@@ -17,7 +27,8 @@ const Header = props => (
         justify-content: space-between;
         line-height: 3rem;
         padding: 0 2rem;
-        background-color: #f2f2f2;
+        background-color: rgba(255, 255, 255, 0.97);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
         text-align: left;
       }
 

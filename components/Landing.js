@@ -14,7 +14,7 @@ const Landing = ({ item }) => (
     <Link prefetch href="/new"><button>Create a delivery</button></Link>
 
     <p>
-      delivery.sh is an homage to
+      use.delivery is an homage to
       {' '}
       <a href="http://layervault.tumblr.com/post/70319555287/delivery-20">Layervault's Delivery</a>
       , which was shut down in 2015.
