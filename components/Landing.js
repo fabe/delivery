@@ -5,15 +5,16 @@ import Head from 'next/head';
 const Landing = ({ item }) => (
   <div className="container">
     <Head>
-      <meta name="description" content="Deliver your design work, clutter-free." />
+      <title>Delivery</title>
+      <meta name="description" content="Present your design work, clutter-free." />
       <meta property="og:title" content="Delivery" />
-      <meta property="og:description" content="Deliver your design work, clutter-free." />
+      <meta property="og:description" content="Present your design work, clutter-free." />
       <meta name="twitter:title" content="Delivery" />
-      <meta name="twitter:description" content="Deliver your design work, clutter-free." />
+      <meta name="twitter:description" content="Present your design work, clutter-free." />
     </Head>
     <h1>🚚</h1>
     <h2>
-      Deliver your design work,<br />clutter-free.
+      Present your design work,<br />clutter-free.
     </h2>
 
     <Link prefetch href="/share?id=B1ItbdzAe">

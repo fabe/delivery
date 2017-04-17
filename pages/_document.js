@@ -30,6 +30,11 @@ export default class extends Document {
           />
 
           <FeedbackWidget />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `console.log('%c 🤓 Yo! Wanna help out? Email me: desk@fabianschultz.com.', 'color: #0474f3; font-size: 1.2em');`,
+            }}
+          />
         </Head>
         <body>
           <Header />
@@ -47,11 +52,7 @@ export default class extends Document {
               margin: 0;
               padding: 0;
               height: 100%;
-            }
-
-            html {
-              background-color: #222;
-              overflow: hidden;
+              background-color: #fff;
             }
 
             body {
@@ -60,13 +61,9 @@ export default class extends Document {
               padding: 3rem 2rem 0;
               font-size: 1rem;
               line-height: 1.5;
-              max-width: 1800px;
               min-height: 100%;
               margin: 0 auto;
-              background-color: #fff;
               -webkit-font-smoothing: antialiased;
-              overflow: scroll;
-              -webkit-overflow-scrolling: touch;
             }
 
             h1 {
@@ -268,6 +265,7 @@ export default class extends Document {
             #pp-cfp-root {
               bottom: 1rem !important;
               right: 1rem !important;
+              z-index: 998 !important;
             }
 
             #pp-cfp-overlay {

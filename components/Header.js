@@ -20,7 +20,6 @@ const Header = props => (
         position: fixed;
         left: 0; right: 0;
         top: 0;
-        max-width: 1800px;
         margin: 0 auto;
         width: 100%; height: 3rem;
         display: flex;
