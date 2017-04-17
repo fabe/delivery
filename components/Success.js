@@ -29,7 +29,7 @@ const Success = ({ id }) => (
         width: 100%;
         margin-top: 0.2rem;
         text-align: center;
-        color: #0474F3;
+        color: #0775F3;
         font: inherit;
         padding: 0;
         border: none;

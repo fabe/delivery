@@ -58,7 +58,6 @@ class DeliveryItem extends React.Component {
             display: block;
             position: relative;
             margin: 0 auto;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, .05);
             opacity: 0;
             transition: .2s opacity ease;
           }

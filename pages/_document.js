@@ -32,7 +32,7 @@ export default class extends Document {
           <FeedbackWidget />
           <script
             dangerouslySetInnerHTML={{
-              __html: `console.log('%c 🤓 Yo! Wanna help out? Email me: desk@fabianschultz.com.', 'color: #0474f3; font-size: 1.2em');`,
+              __html: `console.log('%c 🤓 Yo! Wanna help out? Email me: desk@fabianschultz.com.', 'color: #0775F3; font-size: 1.2em');`,
             }}
           />
         </Head>
@@ -57,7 +57,7 @@ export default class extends Document {
 
             body {
               font-family: system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', roboto, 'Lucida Grande';
-              color: #232325;
+              color: #232323;
               padding: 3rem 2rem 0;
               font-size: 1rem;
               line-height: 1.5;
@@ -127,14 +127,14 @@ export default class extends Document {
             }
 
             a {
-              color: #0474F3;
+              color: #0775F3;
               border-bottom: 1px solid transparent;
               text-decoration: none;
               transition: .2s ease all;
             }
 
             a:hover {
-              border-color: #0474F3;
+              border-color: #0775F3;
             }
 
             strong {
@@ -144,7 +144,7 @@ export default class extends Document {
             button {
               all: unset;
               position: relative;
-              background-color: #0474F3;
+              background-color: #0775F3;
               color: #fff;
               -webkit-text-fill-color: #fff;
               padding: 1rem;
@@ -241,8 +241,10 @@ export default class extends Document {
               transition: .2s all ease;
               box-shadow: none;
               -webkit-appearance: none;
-              font: inherit;
+              font-family: inherit;
             }
+
+            textarea { line-height: 1.5; }
 
             .dashedInput .dashedInput {
               margin-bottom: 0;
@@ -263,13 +265,7 @@ export default class extends Document {
             }
 
             #pp-cfp-root {
-              bottom: 1rem !important;
-              right: 1rem !important;
               z-index: 998 !important;
-            }
-
-            #pp-cfp-overlay {
-              position: fixed !important;
             }
 
             #pp-cfp-trigger {
