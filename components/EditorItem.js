@@ -1,6 +1,7 @@
 import React from 'react';
 import Uploader from './Uploader';
 import TextareaAutosize from 'react-autosize-textarea';
+import { s3Name, s3Region } from '../config';
 
 class EditorItem extends React.Component {
   render() {
@@ -26,8 +27,9 @@ class EditorItem extends React.Component {
 
         <Uploader
           onDrop={() => setIsUploading(true)}
-          onFinishedUpload={url => {
-            onFormChange('image', url, item.id);
+          onFinishedUpload={({ filename }) => {
+            const secureUrl = `https://s3-${s3Region}.amazonaws.com/${s3Name}/${filename}`;
+            onFormChange('image', secureUrl, item.id);
             setIsUploading(false);
           }}
         />
