@@ -47,6 +47,7 @@ const DeliveryItem = ({ item }) => (
         background-image: url('/static/ico-direct.svg');
         opacity: 0;
         transition: .2s all ease;
+        z-index: 40;
       }
 
       .image a:hover {
