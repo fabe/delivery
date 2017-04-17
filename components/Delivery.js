@@ -20,9 +20,7 @@ class Delivery extends React.Component {
     return (
       <div className="container">
         <Head>
-          <title>
-            Delivery — {delivery.title}
-          </title>
+          <title>Delivery — {delivery.title}</title>
           <meta name="description" content={delivery.subtitle} />
           <meta name="author" content={delivery.masthead} />
           <meta property="og:title" content={`Delivery — ${delivery.title}`} />

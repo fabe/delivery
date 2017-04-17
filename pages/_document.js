@@ -10,14 +10,11 @@ export default class extends Document {
         <Head>
           <title>Delivery</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="description" content="Deliver your design work, clutter-free." />
           <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
           <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
 
           <link rel="image_src" type="image/png" href="http://use.delivery/static/facebook.jpg" />
 
-          <meta property="og:title" content="Delivery" />
-          <meta property="og:description" content="Deliver your design work, clutter-free." />
           <meta property="og:image:url" content="http://use.delivery/static/facebook.jpg" />
           <meta property="og:image:type" content="image/jpeg" />
           <meta property="og:url" content="http://use.delivery" />
@@ -26,8 +23,6 @@ export default class extends Document {
 
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@fschultz_" />
-          <meta name="twitter:title" content="Delivery" />
-          <meta name="twitter:description" content="Deliver your design work, clutter-free." />
           <meta name="twitter:image" content="http://use.delivery/static/twitter.jpg" />
           <meta
             name="twitter:summary_large_image"
@@ -160,8 +155,11 @@ export default class extends Document {
               font-weight: 500;
               cursor: pointer;
               transition: .2s ease all;
-              line-height: 1.1;
               text-align: center;
+            }
+
+            @media screen and (max-width: 480px) {
+              button { line-height: 1.1; }
             }
 
             button:hover {
@@ -245,6 +243,8 @@ export default class extends Document {
               resize: none;
               transition: .2s all ease;
               box-shadow: none;
+              -webkit-appearance: none;
+              font: inherit;
             }
 
             .dashedInput .dashedInput {

@@ -24,8 +24,6 @@ export default class EditorPage extends React.Component {
         <Page>
           <Head>
             <title>Delivery — New delivery</title>
-            <meta property="og:title" content="Delivery — New delivery" />
-            <meta name="twitter:title" content="Delivery — New delivery" />
           </Head>
           <Editor delivery={this.store.delivery} />
         </Page>

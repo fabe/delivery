@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Header = props => (
   <header>
-    <Link href="/"><a className="logo">🚚</a></Link>
+    <Link prefetch href="/"><a className="logo">🚚</a></Link>
     <span>
       Built by
       {' '}
