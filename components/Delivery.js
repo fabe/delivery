@@ -23,6 +23,12 @@ class Delivery extends React.Component {
           <title>
             Delivery — {delivery.title}
           </title>
+          <meta name="description" content={delivery.subtitle} />
+          <meta name="author" content={delivery.masthead} />
+          <meta property="og:title" content={`Delivery — ${delivery.title}`} />
+          <meta property="og:description" content={delivery.subtitle} />
+          <meta name="twitter:title" content={`Delivery — ${delivery.title}`} />
+          <meta name="twitter:description" content={delivery.subtitle} />
         </Head>
         {deliveryCreated ? <Success id={delivery.id} /> : null}
         <hgroup>
@@ -40,6 +46,13 @@ class Delivery extends React.Component {
           hgroup {
             margin-top: 4rem;
             margin-bottom: 4rem;
+          }
+
+          @media screen and (max-width: 480px) {
+            hgroup {
+              margin-top: 2rem;
+              margin-bottom: 2rem;
+            }
           }
 
           hgroup p {

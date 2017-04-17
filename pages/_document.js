@@ -10,6 +10,30 @@ export default class extends Document {
         <Head>
           <title>Delivery</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="description" content="Deliver your design work, clutter-free." />
+          <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
+          <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
+
+          <link rel="image_src" type="image/png" href="http://use.delivery/static/facebook.jpg" />
+
+          <meta property="og:title" content="Delivery" />
+          <meta property="og:description" content="Deliver your design work, clutter-free." />
+          <meta property="og:image:url" content="http://use.delivery/static/facebook.jpg" />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:url" content="http://use.delivery" />
+          <meta property="og:image:height" content="1052" />
+          <meta property="og:image:height" content="550" />
+
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content="@fschultz_" />
+          <meta name="twitter:title" content="Delivery" />
+          <meta name="twitter:description" content="Deliver your design work, clutter-free." />
+          <meta name="twitter:image" content="http://use.delivery/static/twitter.jpg" />
+          <meta
+            name="twitter:summary_large_image"
+            content="http://use.delivery/static/facebook.jpg"
+          />
+
           <FeedbackWidget />
         </Head>
         <body>
@@ -20,6 +44,7 @@ export default class extends Document {
           <style jsx global>{`
             * {
               box-sizing: border-box;
+              -webkit-tap-highlight-color: rgba(0,0,0,0);
             }
 
             body,
@@ -35,7 +60,7 @@ export default class extends Document {
             }
 
             body {
-              font-family: system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Lucida Grande';
+              font-family: system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', roboto, 'Lucida Grande';
               color: #232325;
               padding: 3rem 2rem 0;
               font-size: 1rem;
@@ -46,6 +71,7 @@ export default class extends Document {
               background-color: #fff;
               -webkit-font-smoothing: antialiased;
               overflow: scroll;
+              -webkit-overflow-scrolling: touch;
             }
 
             h1 {
@@ -78,6 +104,26 @@ export default class extends Document {
               font-size: 1.2rem;
               font-weight: 500;
               color: #888;
+            }
+
+            @media screen and (max-width: 480px) {
+              h1,
+              .title {
+                font-size: 2rem;
+              }
+
+              h1 {
+                margin-bottom: 1rem;
+              }
+
+              h3 {
+                margin-bottom: 0;
+              }
+
+              h3,
+              .masthead {
+                font-size: 1rem;
+              }
             }
 
             p,
@@ -114,6 +160,8 @@ export default class extends Document {
               font-weight: 500;
               cursor: pointer;
               transition: .2s ease all;
+              line-height: 1.1;
+              text-align: center;
             }
 
             button:hover {
@@ -179,6 +227,12 @@ export default class extends Document {
               background-color: #eee;
             }
 
+            @media screen and (max-width: 480px) {
+              .divider {
+                margin: 2rem auto;
+              }
+            }
+
             .dashedInput {
               display: inline-block;
               width: 100%;
@@ -190,6 +244,7 @@ export default class extends Document {
               text-align: center;
               resize: none;
               transition: .2s all ease;
+              box-shadow: none;
             }
 
             .dashedInput .dashedInput {

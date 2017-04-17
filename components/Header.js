@@ -7,7 +7,7 @@ const Header = props => (
     <span>
       Built by
       {' '}
-      <a href="https://fabianschultz.com">Fabian Schultz</a>
+      <a href="https://fabianschultz.com" target="_blank">Fabian Schultz</a>
       {' '}
       on
       {' '}
