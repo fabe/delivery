@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { parse } = require('url');
 const next = require('next');
 const mobxReact = require('mobx-react');
@@ -10,6 +11,7 @@ const { mLabUrl, mLabUser, mLabPassword } = require('./config');
 const s3Router = require('react-dropzone-s3-uploader/s3router');
 
 const dev = process.env.NODE_ENV !== 'production';
+const port = dev ? 3000 : process.env.PORT || 8080;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -25,12 +27,14 @@ app.prepare().then(() => {
 
   // Body parser
   server.use(bodyParser.json());
+  server.use(cors());
 
   server.post('/api/delivery', (req, res) => {
     postDelivery(req.body, (err, id) => {
       if (err) {
         res.sendStatus(500);
       } else {
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(201).send(JSON.stringify({ id }));
       }
     });
@@ -40,6 +44,7 @@ app.prepare().then(() => {
     getDelivery(req.params.id, delivery => {
       if (delivery) {
         res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
         return res.send(JSON.stringify(delivery));
       } else {
         return res.sendStatus(404);
@@ -61,9 +66,9 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(3000, err => {
+  server.listen(port, err => {
     if (err) throw err;
-    console.log('> Ready on http://localhost:3000');
+    console.log(`> Ready on http://localhost:${port}`);
   });
 });
 

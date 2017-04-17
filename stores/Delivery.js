@@ -2,7 +2,7 @@ import { action, observable, extendObservable } from 'mobx';
 import axios from 'axios';
 import Router from 'next/router';
 import { autobind } from 'core-decorators';
-import { apiUrl } from '../config';
+import { server } from '../config';
 
 export default class Delivery {
   @observable delivery = {};
@@ -96,7 +96,7 @@ export default class Delivery {
       this.editor.items = this.stripedEmptyItems();
 
       axios
-        .post(`${apiUrl}/delivery`, editor)
+        .post(`${server}/api/delivery`, editor)
         .then(res => {
           const url = `/share?id=${res.data.id}`;
           Router.push(url).then(() => {
@@ -114,7 +114,7 @@ export default class Delivery {
   @action
   fetchDelivery(id) {
     axios
-      .get(`${apiUrl}/delivery/${id}`)
+      .get(`${server}/api/delivery/${id}`)
       .then(res => {
         this.delivery = res.data;
       })
