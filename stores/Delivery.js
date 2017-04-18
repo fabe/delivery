@@ -52,7 +52,7 @@ export default class Delivery {
   @autobind
   @action
   addNewItem() {
-    const newItemId = this.editor.items.length;
+    const newItemId = this.editor.items.sort((a, b) => b.id - a.id)[0].id + 1;
     const items = [...this.editor.items, { id: newItemId, title: '', subtitle: '', image: '' }];
     this.editor = { ...this.editor, items };
   }
@@ -62,6 +62,21 @@ export default class Delivery {
   removeItem(itemId) {
     const i = this.editor.items.findIndex(item => item.id === itemId);
     const items = [...this.editor.items.slice(0, i), ...this.editor.items.slice(i + 1)];
+
+    this.editor = { ...this.editor, items };
+  }
+
+  @autobind
+  @action
+  onItemMove(itemId, up) {
+    const index = this.editor.items.findIndex(item => item.id === itemId);
+    const item = this.editor.items.find(item => item.id === itemId);
+    const items = [...this.editor.items];
+    const newIndex = up ? index - 1 : index + 1;
+
+    items.splice(index, 1);
+    items.splice(newIndex, 0, item);
+
     this.editor = { ...this.editor, items };
   }
 

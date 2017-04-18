@@ -18,6 +18,7 @@ class Editor extends React.Component {
       onFormChange,
       addNewItem,
       removeItem,
+      onItemMove,
       postDelivery,
       isCreatingDelivery,
       setIsUploading,
@@ -66,6 +67,7 @@ class Editor extends React.Component {
                 itemsLength={editor.items.length}
                 onFormChange={onFormChange}
                 onRemoveItem={removeItem}
+                onItemMove={onItemMove}
                 setIsUploading={setIsUploading}
               />
             ))}

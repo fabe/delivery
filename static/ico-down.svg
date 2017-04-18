@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="14px" viewBox="0 0 24 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch Beta 43 (38998) - http://www.bohemiancoding.com/sketch -->
+    <title>lnr-chevron-down</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="lnr-chevron-down" transform="translate(-1.000000, 0.000000)" fill-rule="nonzero" fill="#AAAAAA">
+            <path d="M1.00026321,1.13166968 C1.00026321,0.969979088 1.06216039,0.808288495 1.18469154,0.684494135 C1.43101705,0.438168622 1.83145391,0.438168622 2.07777943,0.684494135 L12.9994737,11.6061884 L23.921168,0.684494135 C24.1674935,0.438168622 24.5679304,0.438168622 24.8142559,0.684494135 C25.0605814,0.930819647 25.0605814,1.33125651 24.8142559,1.57758202 L13.445386,12.9464518 C13.1990605,13.1927774 12.7986237,13.1927774 12.5522982,12.9464518 L1.18342833,1.57758202 C1.05963397,1.45378766 0.999,1.29209707 0.999,1.13040647 L1.00026321,1.13166968 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
