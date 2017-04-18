@@ -85,7 +85,7 @@ const Landing = ({ item }) => (
 
       @media screen and (max-width: 480px) {
         div { margin-top: 2rem; }
-        button { margin-bottom: 1rem; margin-right: 0; }
+        button { margin: 0 auto 1rem; display: block; }
       }
 
       @keyframes truck {

@@ -7,13 +7,7 @@ const Header = props => (
     <span>
       Built by
       {' '}
-      <a href="https://fabianschultz.com" target="_blank">Fabian Schultz</a>
-      {' '}
-      on
-      {' '}
-      <span title="Easter">🐣</span>
-      {' '}
-      2017.
+      <a href="https://fabianschultz.com" target="_blank">Fabian Schultz</a> on 🐣 2017.
     </span>
     <style jsx>{`
       header {
@@ -35,6 +29,15 @@ const Header = props => (
       span {
         font-size: 0.7rem;
         font-weight: 500;
+        color: #888;
+      }
+
+      span a {
+        color: #888;
+      }
+
+      span a:hover {
+        border-color: #ddd;
       }
 
       .logo {

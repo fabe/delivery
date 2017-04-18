@@ -44,6 +44,11 @@ class DeliveryItem extends React.Component {
         <style jsx>{`
           div {
             margin-bottom: 6rem;
+            overflow: auto;
+          }
+
+          h2 {
+            margin-top: 0;
           }
 
           .image {
@@ -63,7 +68,12 @@ class DeliveryItem extends React.Component {
           }
 
           .loaded {
+            min-height: 0;
             background-color: transparent;
+          }
+
+          .loaded:before {
+            display: none;
           }
 
           .loaded > :global(img) {

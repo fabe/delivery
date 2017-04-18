@@ -64,6 +64,7 @@ export default class extends Document {
               min-height: 100%;
               margin: 0 auto;
               -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
             }
 
             h1 {
