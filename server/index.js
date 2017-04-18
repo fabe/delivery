@@ -9,6 +9,7 @@ const { Delivery } = require('./schema');
 const shortid = require('shortid');
 const { mLabUrl, mLabUser, mLabPassword } = require('./config');
 const s3Router = require('react-dropzone-s3-uploader/s3router');
+const enforce = require('express-sslify');
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = dev ? 3000 : process.env.PORT || 8080;
@@ -28,6 +29,8 @@ app.prepare().then(() => {
   // Body parser
   server.use(bodyParser.json());
   server.use(cors());
+  console.log(dev);
+  if (!dev) server.use(enforce.HTTPS({ trustProtoHeader: true }));
 
   server.post('/api/delivery', (req, res) => {
     postDelivery(req.body, (err, id) => {
