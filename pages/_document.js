@@ -56,7 +56,7 @@ export default class extends Document {
             }
 
             body {
-              font-family: system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', roboto, 'Lucida Grande';
+              font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
               color: #232323;
               padding: 3rem 2rem 0;
               font-size: 1rem;
@@ -154,6 +154,8 @@ export default class extends Document {
               cursor: pointer;
               transition: .2s ease all;
               text-align: center;
+              box-shadow: none;
+              border: none;
             }
 
             @media screen and (max-width: 480px) {

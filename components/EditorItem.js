@@ -44,6 +44,18 @@ class EditorItem extends React.Component {
             background-position: center;
           }
 
+          @media screen and (max-width: 480px) {
+            button {
+              margin-left: 0;
+              width: 0;
+              padding: 1rem 1.5rem;
+            }
+
+            .move-up + .move-down {
+              margin-left: 0.5rem;
+            }
+          }
+
           .move-up { background-image: url('/static/ico-up.svg'); }
           .move-down { background-image: url('/static/ico-down.svg'); }
         `}</style>
