@@ -12,7 +12,7 @@ const Landing = ({ item }) => (
       <meta name="twitter:title" content="Delivery" />
       <meta name="twitter:description" content="Present your design work, clutter-free." />
     </Head>
-    <h1>🚚</h1>
+    <h1 className="logo">delivery</h1>
     <h2>
       Present your design work,<br />clutter-free.
     </h2>
@@ -34,15 +34,20 @@ const Landing = ({ item }) => (
         text-align: center;
       }
 
-      h1 {
+      .logo {
         margin-top: 0;
-        margin-bottom: 2.5rem;
-        font-size: 2.5rem;
-        line-height: 1;
+        margin-bottom: 0;
         user-select: none;
         cursor: default;
         animation-duration: 1.5s;
         animation-name: truck;
+        width: 40px; height: 34px;
+        display: inline-block;
+        text-indent: -99999px;
+        background-image: url('/static/logo.png');
+        background-size: 40px;
+        background-repeat: no-repeat;
+        color: rgba(0,0,0,0);
       }
 
       h2 {
@@ -90,15 +95,15 @@ const Landing = ({ item }) => (
 
       @keyframes truck {
         0% {
-          text-indent: 150px;
+          transform: translateX(150px);
           opacity: 0;
         }
         50% {
-          text-indent: 150px;
+          transform: translateX(150px);
           opacity: 0;
         }
         100% {
-          text-indent: 0;
+          transform: translateX(0);
           opacity: 1;
         }
       }

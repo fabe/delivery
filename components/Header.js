@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Header = props => (
   <header>
-    <Link prefetch href="/"><a className="logo">🚚</a></Link>
+    <Link prefetch href="/"><a className="logo">delivery</a></Link>
     <span>
       Built by
       {' '}
@@ -42,6 +42,14 @@ const Header = props => (
 
       .logo {
         user-select: none;
+        text-indent: -99999px;
+        background-image: url('/static/logo.png');
+        background-size: 40px;
+        background-repeat: no-repeat;
+        background-position: left center;
+        width: 20px; height: 3rem;
+        background-size: 20px;
+        display: inline-block;
       }
 
       .logo:hover {
