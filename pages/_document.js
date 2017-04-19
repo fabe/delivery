@@ -2,6 +2,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FeedbackWidget from '../components/FeedbackWidget';
+import Analytics from '../components/Analytics';
 
 export default class extends Document {
   render() {
@@ -41,6 +42,7 @@ export default class extends Document {
           <Main />
           <Footer />
           <NextScript />
+          <Analytics />
           <style jsx global>{`
             * {
               box-sizing: border-box;
