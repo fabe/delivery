@@ -1,16 +1,16 @@
 import React from 'react';
-import ImageZoom from 'react-medium-image-zoom';
 
 class DeliveryItem extends React.Component {
   constructor() {
     super();
-    this.state = { loaded: false };
-    this.zoom = {};
+    this.state = { loaded: false, zoom: false };
+    this.image = {};
     this.handleImageLoaded = this.handleImageLoaded.bind(this);
+    this.handleToggleZoom = this.handleToggleZoom.bind(this);
   }
 
   componentDidMount() {
-    const { image } = this.zoom.refs;
+    const { image } = this;
 
     if (image.complete) this.handleImageLoaded();
     image.addEventListener('load', this.handleImageLoaded);
@@ -20,6 +20,16 @@ class DeliveryItem extends React.Component {
     this.setState({ loaded: true });
   }
 
+  handleToggleZoom() {
+    this.setState({ zoom: !this.state.zoom });
+
+    // Don't fuck with SSR.
+    if (document) {
+      const body = document.querySelector('body');
+      body.className === 'no-scroll' ? (body.className = '') : (body.className = 'no-scroll');
+    }
+  }
+
   render() {
     const { item } = this.props;
 
@@ -27,18 +37,15 @@ class DeliveryItem extends React.Component {
       <div>
         <h2 className="item-title">{item.title}</h2>
         <p>{item.subtitle}</p>
-        <span className={`image ${this.state.loaded ? 'loaded' : null}`}>
+        <span
+          className={`image ${this.state.loaded ? 'loaded' : ''} ${this.state.zoom ? 'zoom' : ''}`}
+        >
           <a href={item.image} target="_blank" />
-          <ImageZoom
-            ref={el => this.zoom = el}
-            image={{
-              src: item.image,
-              alt: item.title,
-            }}
-            zoomImage={{
-              src: item.image,
-              alt: item.title,
-            }}
+          <img
+            ref={el => this.image = el}
+            src={item.image}
+            alt={item.title}
+            onClick={this.handleToggleZoom}
           />
         </span>
         <style jsx>{`
@@ -78,6 +85,29 @@ class DeliveryItem extends React.Component {
 
           .loaded > :global(img) {
             opacity: 1;
+          }
+
+          .image {
+            cursor: zoom-in;
+          }
+
+          .image.zoom {
+            position: fixed;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            padding: 2rem;
+            overflow: auto;
+            background-color: #fff;
+            z-index: 1000;
+            cursor: zoom-out;
+          }
+
+          :global(body.no-scroll) {
+            overflow: hidden;
+          }
+
+          .image img {
+            width: auto;
           }
 
           .image:hover > a {

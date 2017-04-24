@@ -25,7 +25,6 @@
     "react-autosize-textarea": "^0.4.2",
     "react-dom": "^15.4.2",
     "react-dropzone-s3-uploader": "^1.0.0-rc.3",
-    "react-medium-image-zoom": "^1.0.0",
     "shortid": "^2.2.8"
   },
   "engines": {
