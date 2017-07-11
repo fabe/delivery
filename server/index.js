@@ -30,7 +30,7 @@ app.prepare().then(() => {
   server.use(bodyParser.json());
   server.use(cors());
   console.log(dev);
-  if (!dev) server.use(enforce.HTTPS({ trustProtoHeader: true }));
+  //if (!dev) server.use(enforce.HTTPS({ trustProtoHeader: true }));
 
   server.post('/api/delivery', (req, res) => {
     postDelivery(req.body, (err, id) => {
@@ -69,7 +69,8 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(port, err => {
+  server.listen(port, '0.0.0.0', err => {
+    console.log(err);
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });
